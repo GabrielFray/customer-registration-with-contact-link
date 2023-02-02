@@ -1,7 +1,6 @@
 import * as React from "react";
 import Button from "@mui/material/Button";
 import Checkbox from "@mui/material/Checkbox";
-import { ContentButton, LogInContent, ContentTitle } from "./styles";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import TextField from "@mui/material/TextField";
 import { FormControl, InputLabel, OutlinedInput } from "@mui/material";
@@ -10,6 +9,17 @@ import IconButton from "@mui/material/IconButton";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { Google, Facebook } from "@mui/icons-material";
+import { styled } from "@mui/material/styles";
+import {
+  ContentButton,
+  LogInContent,
+  ContentTitle,
+  ContinueWith,
+  ContentRemember,
+  ForgotPassword,
+  CreateAccount,
+} from "./styles";
+import Carousel from "../CarouselLogin";
 
 const LogInForm = () => {
   const [showPassword, setShowPassword] = React.useState(false);
@@ -22,6 +32,25 @@ const LogInForm = () => {
     event.preventDefault();
   };
 
+  const CustomButton = styled(Button)({
+    boxShadow: "none",
+    textTransform: "none",
+    fontSize: 16,
+    width: "8rem",
+    height: "2.7rem",
+    border: "2px solid",
+    lineHeight: 1.5,
+    borderColor: "#b3b1b16d",
+
+    "&:hover": {
+      border: "2px solid #61616172",
+      backgroundColor: "transparent",
+    },
+    "&:focus": {
+      borderColor: "#61616172",
+    },
+  });
+
   return (
     <LogInContent>
       <ContentTitle>
@@ -29,18 +58,18 @@ const LogInForm = () => {
         <span>Welcome back! Select method to log in</span>
       </ContentTitle>
       <ContentButton>
-        <Button variant="outlined" startIcon={<Google />}>
+        <CustomButton variant="outlined" startIcon={<Google />}>
           Google
-        </Button>
-        <Button variant="outlined" endIcon={<Facebook />}>
+        </CustomButton>
+        <CustomButton variant="outlined" startIcon={<Facebook />}>
           Facebook
-        </Button>
+        </CustomButton>
       </ContentButton>
-      <div>
-        <p></p>
+      <ContinueWith>
+        <div></div>
         <span>or continue with email</span>
-        <p></p>
-      </div>
+        <div></div>
+      </ContinueWith>
       <TextField id="outlined-basic" label="Email" variant="outlined" />
       <FormControl>
         <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
@@ -62,17 +91,17 @@ const LogInForm = () => {
           label="Password"
         />
       </FormControl>
-      <div>
+      <ContentRemember>
         <FormControlLabel
           control={<Checkbox defaultChecked />}
           label="Remember me"
         />
-        <span>Forgot Password?</span>
-      </div>
+        <ForgotPassword>Forgot Password?</ForgotPassword>
+      </ContentRemember>
       <Button variant="contained">Log in</Button>
-      <p>
+      <CreateAccount>
         Don't have an account? <span>Create an account</span>
-      </p>
+      </CreateAccount>
     </LogInContent>
   );
 };
