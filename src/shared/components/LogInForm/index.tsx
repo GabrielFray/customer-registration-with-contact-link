@@ -3,12 +3,12 @@ import Button from "@mui/material/Button";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import TextField from "@mui/material/TextField";
-import { FormControl, InputLabel, OutlinedInput } from "@mui/material";
+import { FormControl, Input, InputLabel, OutlinedInput } from "@mui/material";
 import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import { Google, Facebook } from "@mui/icons-material";
+import { Google, Facebook, Email } from "@mui/icons-material";
 import { styled } from "@mui/material/styles";
 import {
   ContentButton,
@@ -18,8 +18,8 @@ import {
   ContentRemember,
   ForgotPassword,
   CreateAccount,
+  StyledLink,
 } from "./styles";
-import Carousel from "../CarouselLogin";
 
 const LogInForm = () => {
   const [showPassword, setShowPassword] = React.useState(false);
@@ -100,7 +100,8 @@ const LogInForm = () => {
       </ContentRemember>
       <Button variant="contained">Log in</Button>
       <CreateAccount>
-        Don't have an account? <span>Create an account</span>
+        Don't have an account?{" "}
+        <StyledLink to={"/register"}>Create an account</StyledLink>
       </CreateAccount>
     </LogInContent>
   );

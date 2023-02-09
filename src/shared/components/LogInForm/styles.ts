@@ -1,20 +1,25 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const LogInContent = styled.div`
 display: flex;
 flex-direction: column;
 justify-content: space-evenly;
-width: 35rem;
+
+width: 30rem;
 height: 100vh;
 max-height: 50rem;
-padding: .625rem;
+padding: 1.5rem;
+
 background-color: #fff;
+border-radius: .3125rem;
 
 `
 
 export const ContentButton = styled.div`
 display: flex;
 justify-content: space-between;
+align-items: center;
 `
 
 export const ContentTitle = styled.div`
@@ -76,14 +81,13 @@ font-weight: 500;
 
 export const CreateAccount = styled.p`
 text-align: center;
+`
+export const StyledLink = styled(Link)`
+    font-weight: 500;
+    color: #1976d2;
 
-    span {
-        font-weight: 500;
-        color: #1976d2;
-
-        :hover {
-            cursor: pointer;
-            text-decoration: underline #1976d2;
-        }
+    :hover {
+        cursor: pointer;
+        text-decoration: underline #1976d2;
     }
 `
