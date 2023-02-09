@@ -1,3 +1,12 @@
+import RegisterForm from "../../shared/components/RegisterForm";
+import { ContentRegisterPage } from "./styles";
+
 const RegisterPage = () => {
-  return <div></div>;
+  return (
+    <ContentRegisterPage>
+      <RegisterForm></RegisterForm>
+    </ContentRegisterPage>
+  );
 };
+
+export default RegisterPage;
