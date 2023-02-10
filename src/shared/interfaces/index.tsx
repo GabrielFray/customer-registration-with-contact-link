@@ -16,3 +16,10 @@ export interface ILoginData {
   email: string;
   password: string;
 }
+
+export interface IContactData {
+  id: string;
+  name: string;
+  email: string;
+  telephone: string;
+}

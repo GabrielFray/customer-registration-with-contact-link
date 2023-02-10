@@ -13,3 +13,8 @@ export const formRegisterSchema = yup.object().shape({
     .oneOf([yup.ref("password")], "Senhas não correspondem"),
   telephone: yup.string().required("Campo obrigatório"),
 });
+
+export const formLoginSchema = yup.object().shape({
+  email: yup.string().required("Campo obrigatório").email("E-mail inválido"),
+  password: yup.string().required("Campo obrigatório"),
+});
