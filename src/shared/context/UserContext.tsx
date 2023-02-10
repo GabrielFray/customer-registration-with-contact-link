@@ -1,4 +1,4 @@
-import { createContext, useEffect } from "react";
+import { createContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { ILoginData, IProps, IRegisterData } from "../interfaces";
@@ -22,13 +22,6 @@ const UserProvider = ({ children }: IProps) => {
     navigate("/");
   };
 
-  // useEffect(() => {
-  //   const token = localStorage.getItem("@GetInTouch:token");
-  //   if (!token) {
-  //     navigate("/");
-  //   }
-  // }, []);
-
   const onSubmitRegister = (data: IRegisterData) => {
     const newData = {
       name: data.name,
@@ -36,15 +29,17 @@ const UserProvider = ({ children }: IProps) => {
       email: data.email,
       telephone: data.telephone,
     };
-    console.log(newData);
     api
       .post("/user", newData)
       .then(() => {
-        navigate("/session");
-        toast.success("Account created successfully!");
+        toast.success("Account created successfully!", {
+          toastId: 1,
+        });
       })
       .catch((err) => {
-        toast.error(err.message);
+        toast.error(err.message, {
+          toastId: 1,
+        });
       });
   };
 
@@ -53,14 +48,19 @@ const UserProvider = ({ children }: IProps) => {
       .post("/session", data)
       .then((res) => {
         localStorage.setItem("@GetInTouch:token", res.data.token);
-        localStorage.setItem("@GetInTouch:user", JSON.stringify(res.data.user));
 
-        navigate("/dashboard");
+        setTimeout(() => {
+          navigate("/dashboard");
+        }, 2000);
 
-        toast.success("Logged in successfully, redirecting!");
+        toast.success("Logged in successfully, redirecting!", {
+          toastId: 1,
+        });
       })
       .catch((err) => {
-        toast.error(err.message);
+        toast.error(err.response.data.message, {
+          toastId: 1,
+        });
       });
   };
   return (
