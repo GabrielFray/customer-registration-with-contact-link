@@ -10,10 +10,8 @@ width: 30rem;
 height: 100vh;
 max-height: 50rem;
 padding: 1.5rem;
-
 background-color: #fff;
 border-radius: .3125rem;
-
 `
 
 export const ContentButton = styled.div`
@@ -59,6 +57,13 @@ justify-content: center;
         background-color: #61616172;
     }
 `
+
+export const ContentForm = styled.form`
+display: flex;
+flex-direction: column;
+gap: 2.5rem;
+`
+
 export const ContentRemember = styled.div`
 display: flex;
 align-items: center;
