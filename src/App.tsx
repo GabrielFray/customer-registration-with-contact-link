@@ -6,7 +6,6 @@ import ContactProviderContext from "./shared/context/ContactContext";
 
 const App = () => {
   return (
-    <>
       <UserProvider>
         <ContactProviderContext>
           <ToastContainer
@@ -20,7 +19,6 @@ const App = () => {
           <Routes></Routes>
         </ContactProviderContext>
       </UserProvider>
-    </>
   );
 };
 

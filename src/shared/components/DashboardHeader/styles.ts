@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const ContentHeader = styled.header`
-background-color: aliceblue;
-width: 100vw;
+width: 100%;
 padding: .625rem;
 `

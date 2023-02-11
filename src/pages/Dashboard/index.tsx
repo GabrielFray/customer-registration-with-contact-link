@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import DashboardContacts from "../../shared/components/DashboardContacts";
 import DashboardHeader from "../../shared/components/DashboardHeader";
+import { ContentDashboard } from "./styles";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -13,10 +14,10 @@ const Dashboard = () => {
   //   }
   // }, []);
   return (
-    <>
+    <ContentDashboard>
       <DashboardHeader />
       <DashboardContacts />
-    </>
+    </ContentDashboard>
   );
 };
 

@@ -18,8 +18,9 @@ export interface ILoginData {
 }
 
 export interface IContactData {
-  id: string;
+  id?: string;
   name: string;
   email: string;
   telephone: string;
 }
+

@@ -3,18 +3,30 @@ import { toast } from "react-toastify";
 import { IContactData, IProps } from "../interfaces";
 import api from "../services/api";
 
-export const ContactContext = createContext({} as IUserContext);
+export const ContactContext = createContext({} as IContactContext);
 
-interface IUserContext {
+interface IContactContext {
   createContact: (data: IContactData) => void;
+
+  updateContact: (data: IContactData, id: string) => void;
+
+  deleteContact: (id: string) => void;
 
   contacts: [];
 
   setContacts: Dispatch<SetStateAction<[]>>;
 
-  contactModal: boolean;
+  createContactModal: boolean;
 
-  setContactModal: Dispatch<SetStateAction<boolean>>;
+  setCreateContactModal: Dispatch<SetStateAction<boolean>>;
+
+  updateContactModal: boolean;
+
+  setUpdateContactModal: Dispatch<SetStateAction<boolean>>;
+
+  contactValues: IContactData;
+
+  setContactValues: Dispatch<SetStateAction<{}>>;
 }
 
 const ContactProviderContext = ({ children }: IProps) => {
@@ -22,7 +34,11 @@ const ContactProviderContext = ({ children }: IProps) => {
 
   const [contacts, setContacts] = useState<[]>([]);
 
-  const [contactModal, setContactModal] = useState<boolean>(false);
+  const [createContactModal, setCreateContactModal] = useState<boolean>(false);
+
+  const [updateContactModal, setUpdateContactModal] = useState<boolean>(false);
+
+  const [contactValues, setContactValues] = useState<any>();
 
   const createContact = (data: IContactData) => {
     api
@@ -33,7 +49,7 @@ const ContactProviderContext = ({ children }: IProps) => {
         toast.success("Contact successfully created", {
           toastId: 1,
         });
-        setContactModal(false);
+        setCreateContactModal(false);
       })
       .catch((err) => {
         toast.error(err.response.data.message, {
@@ -41,14 +57,46 @@ const ContactProviderContext = ({ children }: IProps) => {
         });
       });
   };
+
+  const updateContact = (data: IContactData, id: string) => {
+    api
+      .patch(`/contact/${id}`, data, {
+        headers: { Authorization: `Bearer ${token} ` },
+      })
+      .then(() => {
+        toast.success("Contact successfully update", {
+          toastId: 1,
+        });
+        setUpdateContactModal(false);
+      });
+  };
+
+  const deleteContact = (id: string) => {
+    api
+      .delete(`/contact/${id}`, {
+        headers: { Authorization: `Bearer ${token} ` },
+      })
+      .then(() => {
+        toast.success("Contact successfully delete", {
+          toastId: 1,
+        });
+      });
+    setUpdateContactModal(false);
+  };
   return (
     <ContactContext.Provider
       value={{
+        createContact,
+        deleteContact,
+        updateContact,
         contacts,
         setContacts,
-        createContact,
-        contactModal,
-        setContactModal,
+        createContactModal,
+        setCreateContactModal,
+        updateContactModal,
+        setUpdateContactModal,
+        contactValues,
+        setContactValues,
       }}
     >
       {children}

@@ -6,9 +6,10 @@ flex-direction: column;
 justify-content: space-evenly;
 
 width: 30rem;
-height: 100vh;
+height: 100%;
 max-height: 50rem;
 padding: 1.5rem;
+gap: 1rem;
 
 background-color: #fff;
 border-radius: .3125rem;
@@ -45,7 +46,6 @@ flex-direction: column;
 justify-content: center;
 gap: 2.5rem;
 width: 100%;
-height: 65%;
 `
 
 export const ContinueWith = styled.div`
