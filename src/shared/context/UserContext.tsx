@@ -1,21 +1,30 @@
-import { createContext } from "react";
+import * as React from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { ILoginData, IProps, IRegisterData } from "../interfaces";
+import { ILoginData, IProps, IRegisterData, IUpdateData } from "../interfaces";
 import api from "../services/api";
 
-export const UserContext = createContext({} as IUserContext);
+export const UserContext = React.createContext({} as IUserContext);
 
 interface IUserContext {
+  logout: () => void;
+
+  updateModalProfile: boolean;
+
+  setUpdateModalProfile: React.Dispatch<React.SetStateAction<boolean>>;
+
   onSubmitRegister: (data: IRegisterData) => void;
 
   onSubmitLogin: (data: ILoginData) => void;
 
-  logout: () => void;
+  onSubmitUpdate: (data: IUpdateData) => void;
 }
 
 const UserProvider = ({ children }: IProps) => {
   const navigate = useNavigate();
+
+  const [updateModalProfile, setUpdateModalProfile] =
+    React.useState<boolean>(false);
 
   const logout = () => {
     localStorage.clear();
@@ -63,8 +72,26 @@ const UserProvider = ({ children }: IProps) => {
         });
       });
   };
+
+  const onSubmitUpdate = (data: IUpdateData) => {
+    api.patch("/user", data).then(() => {
+      toast.success("Profile successfully update", {
+        toastId: 1,
+      });
+    });
+  };
+
   return (
-    <UserContext.Provider value={{ onSubmitLogin, onSubmitRegister, logout }}>
+    <UserContext.Provider
+      value={{
+        logout,
+        updateModalProfile,
+        setUpdateModalProfile,
+        onSubmitLogin,
+        onSubmitRegister,
+        onSubmitUpdate,
+      }}
+    >
       {children}
     </UserContext.Provider>
   );

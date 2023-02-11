@@ -16,9 +16,11 @@ import Tooltip from "@mui/material/Tooltip";
 import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
 import { UserContext } from "../../context/UserContext";
+import ModalUpdateProfile from "../ModalUpdateProfile";
 
 const DashboardHeader = () => {
-  const { logout } = React.useContext(UserContext);
+  const { logout, onSubmitUpdate, updateModalProfile, setUpdateModalProfile } =
+    React.useContext(UserContext);
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
@@ -34,6 +36,7 @@ const DashboardHeader = () => {
 
   return (
     <ContentHeader>
+      {updateModalProfile && <ModalUpdateProfile />}
       <Paper
         component="form"
         sx={{
@@ -104,7 +107,7 @@ const DashboardHeader = () => {
             transformOrigin={{ horizontal: "right", vertical: "top" }}
             anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
           >
-            <MenuItem onClick={() => handleClose}>
+            <MenuItem onClick={() => setUpdateModalProfile(true)}>
               <Avatar /> My account
             </MenuItem>
             <Divider />

@@ -37,9 +37,10 @@ const DashboardContacts = () => {
     updateContactModal,
     setUpdateContactModal,
     setContactValues,
+    contactValues,
+    deleteContact,
+    request,
   } = React.useContext(ContactContext);
-
-  const navigate = useNavigate();
 
   const token = localStorage.getItem("@GetInTouch:token");
 
@@ -51,7 +52,7 @@ const DashboardContacts = () => {
       .then((res) => {
         setContacts(res.data);
       });
-  }, [token, setContacts]);
+  }, [token, request]);
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
@@ -137,7 +138,7 @@ const DashboardContacts = () => {
                       elevation: 0,
                       sx: {
                         overflow: "visible",
-                        filter: "drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.101))",
+                        filter: "drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.101))",
                         mt: 1.5,
                         "& .MuiAvatar-root": {
                           width: 32,
@@ -172,7 +173,14 @@ const DashboardContacts = () => {
                       </ListItemIcon>
                       Update
                     </MenuItem>
-                    <MenuItem>
+                    <Divider />
+                    <MenuItem
+                      onClick={() => {
+                        if (contactValues.id) {
+                          deleteContact(contactValues.id);
+                        }
+                      }}
+                    >
                       <ListItemIcon>
                         <DeleteIcon fontSize="medium" />
                       </ListItemIcon>

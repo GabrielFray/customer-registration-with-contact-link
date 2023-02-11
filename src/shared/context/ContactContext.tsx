@@ -1,9 +1,9 @@
-import { createContext, Dispatch, SetStateAction, useState } from "react";
+import * as React from "react";
+import api from "../services/api";
 import { toast } from "react-toastify";
 import { IContactData, IProps } from "../interfaces";
-import api from "../services/api";
 
-export const ContactContext = createContext({} as IContactContext);
+export const ContactContext = React.createContext({} as IContactContext);
 
 interface IContactContext {
   createContact: (data: IContactData) => void;
@@ -14,31 +14,37 @@ interface IContactContext {
 
   contacts: [];
 
-  setContacts: Dispatch<SetStateAction<[]>>;
+  setContacts: React.Dispatch<React.SetStateAction<[]>>;
 
   createContactModal: boolean;
 
-  setCreateContactModal: Dispatch<SetStateAction<boolean>>;
+  setCreateContactModal: React.Dispatch<React.SetStateAction<boolean>>;
 
   updateContactModal: boolean;
 
-  setUpdateContactModal: Dispatch<SetStateAction<boolean>>;
+  setUpdateContactModal: React.Dispatch<React.SetStateAction<boolean>>;
 
   contactValues: IContactData;
 
-  setContactValues: Dispatch<SetStateAction<{}>>;
+  setContactValues: React.Dispatch<React.SetStateAction<{}>>;
+
+  request: string;
 }
 
 const ContactProviderContext = ({ children }: IProps) => {
   const token = localStorage.getItem("@GetInTouch:token");
 
-  const [contacts, setContacts] = useState<[]>([]);
+  const [contacts, setContacts] = React.useState<[]>([]);
 
-  const [createContactModal, setCreateContactModal] = useState<boolean>(false);
+  const [request, setResquest] = React.useState<string>("");
 
-  const [updateContactModal, setUpdateContactModal] = useState<boolean>(false);
+  const [createContactModal, setCreateContactModal] =
+    React.useState<boolean>(false);
 
-  const [contactValues, setContactValues] = useState<any>();
+  const [updateContactModal, setUpdateContactModal] =
+    React.useState<boolean>(false);
+
+  const [contactValues, setContactValues] = React.useState<any>();
 
   const createContact = (data: IContactData) => {
     api
@@ -50,6 +56,7 @@ const ContactProviderContext = ({ children }: IProps) => {
           toastId: 1,
         });
         setCreateContactModal(false);
+        setResquest("Contact created");
       })
       .catch((err) => {
         toast.error(err.response.data.message, {
@@ -68,6 +75,7 @@ const ContactProviderContext = ({ children }: IProps) => {
           toastId: 1,
         });
         setUpdateContactModal(false);
+        setResquest("Contact updated");
       });
   };
 
@@ -80,8 +88,9 @@ const ContactProviderContext = ({ children }: IProps) => {
         toast.success("Contact successfully delete", {
           toastId: 1,
         });
+        setUpdateContactModal(false);
+        setResquest("Contact deleted");
       });
-    setUpdateContactModal(false);
   };
   return (
     <ContactContext.Provider
@@ -97,6 +106,7 @@ const ContactProviderContext = ({ children }: IProps) => {
         setUpdateContactModal,
         contactValues,
         setContactValues,
+        request,
       }}
     >
       {children}
