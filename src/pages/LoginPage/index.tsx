@@ -4,7 +4,8 @@ import { ContentLoginPage } from "./styles";
 const LoginPage = () => {
   return (
     <ContentLoginPage>
-        <LogInForm />
+      <LogInForm />
+     
     </ContentLoginPage>
   );
 };

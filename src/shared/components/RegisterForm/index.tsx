@@ -116,7 +116,7 @@ const RegisterForm = () => {
         </Button>
       </ContentForm>
       <LoginAccount>
-        Already have an account? <StyledLink to={"/session"}>Log in</StyledLink>
+        Already have an account? <StyledLink to={"/"}>Log in</StyledLink>
       </LoginAccount>
     </RegisterContent>
   );

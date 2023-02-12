@@ -3,11 +3,18 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { ILoginData, IProps, IRegisterData, IUpdateData } from "../interfaces";
 import api from "../services/api";
+import { ContactContext } from "./ContactContext";
 
 export const UserContext = React.createContext({} as IUserContext);
 
 interface IUserContext {
   logout: () => void;
+
+  profileRequest: string;
+
+  updateProfile: boolean;
+
+  setUpdateProfile: React.Dispatch<React.SetStateAction<boolean>>;
 
   updateModalProfile: boolean;
 
@@ -18,13 +25,23 @@ interface IUserContext {
   onSubmitLogin: (data: ILoginData) => void;
 
   onSubmitUpdate: (data: IUpdateData) => void;
+
+  userValues: IUpdateData;
+
+  setUserValues: React.Dispatch<React.SetStateAction<{}>>;
 }
 
 const UserProvider = ({ children }: IProps) => {
   const navigate = useNavigate();
 
+  const [profileRequest, setProfileRequest] = React.useState<string>("");
+
+  const [updateProfile, setUpdateProfile] = React.useState<boolean>(false);
+
   const [updateModalProfile, setUpdateModalProfile] =
     React.useState<boolean>(false);
+
+  const [userValues, setUserValues] = React.useState<IUpdateData>({});
 
   const logout = () => {
     localStorage.clear();
@@ -44,6 +61,7 @@ const UserProvider = ({ children }: IProps) => {
         toast.success("Account created successfully!", {
           toastId: 1,
         });
+        navigate("/");
       })
       .catch((err) => {
         toast.error(err.message, {
@@ -73,20 +91,33 @@ const UserProvider = ({ children }: IProps) => {
       });
   };
 
+  const token = localStorage.getItem("@GetInTouch:token");
+
   const onSubmitUpdate = (data: IUpdateData) => {
-    api.patch("/user", data).then(() => {
-      toast.success("Profile successfully update", {
-        toastId: 1,
+    api
+      .patch("/user", data, {
+        headers: { Authorization: `Bearer ${token} ` },
+      })
+      .then(() => {
+        toast.success("Profile successfully update", {
+          toastId: 1,
+        });
+        setUpdateModalProfile(false);
+        setProfileRequest("Profile updated");
       });
-    });
   };
 
   return (
     <UserContext.Provider
       value={{
+        profileRequest,
         logout,
+        updateProfile,
+        setUpdateProfile,
         updateModalProfile,
         setUpdateModalProfile,
+        userValues,
+        setUserValues,
         onSubmitLogin,
         onSubmitRegister,
         onSubmitUpdate,

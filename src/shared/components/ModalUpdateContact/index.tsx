@@ -1,14 +1,13 @@
 import * as React from "react";
-import Modal from "@mui/material/Modal";
-import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import { Clear } from "@mui/icons-material";
-import { IconButton, TextField } from "@mui/material";
+import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
-import { ContactContext } from "../../context/ContactContext";
 import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
+import { Clear } from "@mui/icons-material";
 import { IContactData } from "../../interfaces";
+import Typography from "@mui/material/Typography";
+import { IconButton, TextField } from "@mui/material";
+import { ContactContext } from "../../context/ContactContext";
 
 import {
   ContentHeader,

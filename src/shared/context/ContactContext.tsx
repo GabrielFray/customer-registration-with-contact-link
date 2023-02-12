@@ -36,7 +36,7 @@ const ContactProviderContext = ({ children }: IProps) => {
 
   const [contacts, setContacts] = React.useState<[]>([]);
 
-  const [request, setResquest] = React.useState<string>("");
+  const [request, setRequest] = React.useState<string>("");
 
   const [createContactModal, setCreateContactModal] =
     React.useState<boolean>(false);
@@ -56,7 +56,7 @@ const ContactProviderContext = ({ children }: IProps) => {
           toastId: 1,
         });
         setCreateContactModal(false);
-        setResquest("Contact created");
+        setRequest("Contact created");
       })
       .catch((err) => {
         toast.error(err.response.data.message, {
@@ -75,7 +75,7 @@ const ContactProviderContext = ({ children }: IProps) => {
           toastId: 1,
         });
         setUpdateContactModal(false);
-        setResquest("Contact updated");
+        setRequest("Contact updated");
       });
   };
 
@@ -89,7 +89,7 @@ const ContactProviderContext = ({ children }: IProps) => {
           toastId: 1,
         });
         setUpdateContactModal(false);
-        setResquest("Contact deleted");
+        setRequest("Contact deleted");
       });
   };
   return (

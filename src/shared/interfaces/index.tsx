@@ -30,3 +30,4 @@ export interface IUpdateData {
   email?: string;
   telephone?: string;
 }
+

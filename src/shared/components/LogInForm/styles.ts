@@ -12,6 +12,7 @@ max-height: 50rem;
 padding: 1.5rem;
 background-color: #fff;
 border-radius: .3125rem;
+
 `
 
 export const ContentButton = styled.div`

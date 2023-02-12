@@ -6,7 +6,6 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import { ContentHeader } from "./styles";
 import { AccountCircle } from "@mui/icons-material";
-
 import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
@@ -16,10 +15,9 @@ import Tooltip from "@mui/material/Tooltip";
 import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
 import { UserContext } from "../../context/UserContext";
-import ModalUpdateProfile from "../ModalUpdateProfile";
 
 const DashboardHeader = () => {
-  const { logout, onSubmitUpdate, updateModalProfile, setUpdateModalProfile } =
+  const { logout, setUpdateProfile } =
     React.useContext(UserContext);
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -36,7 +34,6 @@ const DashboardHeader = () => {
 
   return (
     <ContentHeader>
-      {updateModalProfile && <ModalUpdateProfile />}
       <Paper
         component="form"
         sx={{
@@ -107,7 +104,7 @@ const DashboardHeader = () => {
             transformOrigin={{ horizontal: "right", vertical: "top" }}
             anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
           >
-            <MenuItem onClick={() => setUpdateModalProfile(true)}>
+            <MenuItem onClick={() => setUpdateProfile(true)}>
               <Avatar /> My account
             </MenuItem>
             <Divider />

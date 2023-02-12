@@ -5,7 +5,6 @@ import Avatar from "@mui/material/Avatar";
 import { ContentContacts } from "./styles";
 import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
-import { useNavigate } from "react-router-dom";
 import { IContactData } from "../../interfaces";
 import Typography from "@mui/material/Typography";
 import ListItemText from "@mui/material/ListItemText";
@@ -33,7 +32,6 @@ const DashboardContacts = () => {
     setContacts,
     createContactModal,
     setCreateContactModal,
-    createContact,
     updateContactModal,
     setUpdateContactModal,
     setContactValues,
@@ -49,9 +47,7 @@ const DashboardContacts = () => {
       .get("/contact", {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then((res) => {
-        setContacts(res.data);
-      });
+      .then((res) => setContacts(res.data));
   }, [token, request]);
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
