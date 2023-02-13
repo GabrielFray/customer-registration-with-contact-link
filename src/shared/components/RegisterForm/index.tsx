@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { StyledLink } from "../LogInForm/styles";
 import { IRegisterData } from "../../interfaces";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -17,9 +17,9 @@ import { Button, IconButton, InputAdornment, TextField } from "@mui/material";
 const RegisterForm = () => {
   const { onSubmitRegister } = useContext(UserContext);
 
-  const [showPassword, setShowPassword] = React.useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
-  const [showConfirmPassword, setShowConfirmPassword] = React.useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -56,7 +56,7 @@ const RegisterForm = () => {
           id="password"
           label="Password"
           type={showPassword ? "text" : "password"}
-          error={Boolean(errors.password)}
+          variant="outlined"
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
@@ -71,14 +71,14 @@ const RegisterForm = () => {
               </InputAdornment>
             ),
           }}
-          variant="outlined"
+          error={Boolean(errors.password)}
           {...register("password")}
         />
         <TextField
           id="confirmPassword"
           label="Confirm password"
           type={showConfirmPassword ? "text" : "password"}
-          error={Boolean(errors.confirmPassword)}
+          variant="outlined"
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
@@ -93,7 +93,7 @@ const RegisterForm = () => {
               </InputAdornment>
             ),
           }}
-          variant="outlined"
+          error={Boolean(errors.confirmPassword)}
           {...register("confirmPassword")}
         />
         <TextField
@@ -112,11 +112,11 @@ const RegisterForm = () => {
           {...register("telephone")}
         />
         <Button type="submit" variant="contained">
-          Register
+          Submit
         </Button>
       </ContentForm>
       <LoginAccount>
-        Already have an account? <StyledLink to={"/session"}>Log in</StyledLink>
+        Already have an account? <StyledLink to={"/"}>Log in</StyledLink>
       </LoginAccount>
     </RegisterContent>
   );

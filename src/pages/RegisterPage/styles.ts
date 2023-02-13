@@ -9,12 +9,4 @@ background-color: #8EC5FC;
 background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
 width: 100vw;
 height: 100vh;
-
-    .logInCarousel {
-        display: flex;
-        background-color: #ffff;
-
-        width: 50%;
-        border-radius: 5px;
-    }
 `

@@ -1,33 +1,52 @@
-import { createContext, useEffect } from "react";
+import * as React from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { ILoginData, IProps, IRegisterData } from "../interfaces";
+import { ILoginData, IProps, IRegisterData, IUpdateData } from "../interfaces";
 import api from "../services/api";
+import { ContactContext } from "./ContactContext";
 
-export const UserContext = createContext({} as IUserContext);
+export const UserContext = React.createContext({} as IUserContext);
 
 interface IUserContext {
+  logout: () => void;
+
+  profileRequest: string;
+
+  updateProfile: boolean;
+
+  setUpdateProfile: React.Dispatch<React.SetStateAction<boolean>>;
+
+  updateModalProfile: boolean;
+
+  setUpdateModalProfile: React.Dispatch<React.SetStateAction<boolean>>;
+
   onSubmitRegister: (data: IRegisterData) => void;
 
   onSubmitLogin: (data: ILoginData) => void;
 
-  logout: () => void;
+  onSubmitUpdate: (data: IUpdateData) => void;
+
+  userValues: IUpdateData;
+
+  setUserValues: React.Dispatch<React.SetStateAction<{}>>;
 }
 
 const UserProvider = ({ children }: IProps) => {
   const navigate = useNavigate();
 
+  const [profileRequest, setProfileRequest] = React.useState<string>("");
+
+  const [updateProfile, setUpdateProfile] = React.useState<boolean>(false);
+
+  const [updateModalProfile, setUpdateModalProfile] =
+    React.useState<boolean>(false);
+
+  const [userValues, setUserValues] = React.useState<IUpdateData>({});
+
   const logout = () => {
     localStorage.clear();
     navigate("/");
   };
-
-  // useEffect(() => {
-  //   const token = localStorage.getItem("@GetInTouch:token");
-  //   if (!token) {
-  //     navigate("/");
-  //   }
-  // }, []);
 
   const onSubmitRegister = (data: IRegisterData) => {
     const newData = {
@@ -36,15 +55,18 @@ const UserProvider = ({ children }: IProps) => {
       email: data.email,
       telephone: data.telephone,
     };
-    console.log(newData);
     api
       .post("/user", newData)
       .then(() => {
-        navigate("/session");
-        toast.success("Account created successfully!");
+        toast.success("Account created successfully!", {
+          toastId: 1,
+        });
+        navigate("/");
       })
       .catch((err) => {
-        toast.error(err.message);
+        toast.error(err.message, {
+          toastId: 1,
+        });
       });
   };
 
@@ -53,18 +75,54 @@ const UserProvider = ({ children }: IProps) => {
       .post("/session", data)
       .then((res) => {
         localStorage.setItem("@GetInTouch:token", res.data.token);
-        localStorage.setItem("@GetInTouch:user", JSON.stringify(res.data.user));
 
-        navigate("/dashboard");
+        setTimeout(() => {
+          navigate("/dashboard");
+        }, 2000);
 
-        toast.success("Logged in successfully, redirecting!");
+        toast.success("Logged in successfully, redirecting!", {
+          toastId: 1,
+        });
       })
       .catch((err) => {
-        toast.error(err.message);
+        toast.error(err.response.data.message, {
+          toastId: 1,
+        });
       });
   };
+
+  const token = localStorage.getItem("@GetInTouch:token");
+
+  const onSubmitUpdate = (data: IUpdateData) => {
+    api
+      .patch("/user", data, {
+        headers: { Authorization: `Bearer ${token} ` },
+      })
+      .then(() => {
+        toast.success("Profile successfully update", {
+          toastId: 1,
+        });
+        setUpdateModalProfile(false);
+        setProfileRequest("Profile updated");
+      });
+  };
+
   return (
-    <UserContext.Provider value={{ onSubmitLogin, onSubmitRegister, logout }}>
+    <UserContext.Provider
+      value={{
+        profileRequest,
+        logout,
+        updateProfile,
+        setUpdateProfile,
+        updateModalProfile,
+        setUpdateModalProfile,
+        userValues,
+        setUserValues,
+        onSubmitLogin,
+        onSubmitRegister,
+        onSubmitUpdate,
+      }}
+    >
       {children}
     </UserContext.Provider>
   );
