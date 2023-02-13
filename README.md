@@ -17,7 +17,7 @@
 
 ## 1. Sobre
 
-- A finalidade desta API é criar um sistema de cadastro simplificado de clientes, onde será possível vincular contatos a cada cliente. A API permitirá a visualização dos clientes e dos contatos vinculados a eles de forma organizada e fácil de acessar. Além disso, essa API fornecerá as funcionalidades básicas de um CRUD (criação, leitura, atualização e exclusão) para gerenciar esses dados de forma eficiente e segura, permitindo que você mantenha seu cadastro de clientes atualizado e sempre à mão. Em resumo, a API de cadastro de clientes com vínculo de contatos oferece uma solução simplificada e prática para gerenciar seus dados de clientes e contatos.
+- A finalidade desta API é criar um sistema de cadastro simplificado de clientes, onde será possível vincular contatos a cada cliente. A Api permitirá a visualização dos clientes e dos contatos vinculados a eles de forma organizada e fácil de acessar. Além disso, essa Api fornecerá as funcionalidades básicas de um CRUD (criação, leitura, atualização e exclusão) para gerenciar esses dados de forma eficiente e segura, permitindo que você mantenha seu cadastro de clientes atualizado e sempre à mão. Em resumo, a API de cadastro de clientes com vínculo de contatos oferece uma solução simplificada e prática para gerenciar seus dados de clientes e contatos.
 
 <a name="links"></a>
 
