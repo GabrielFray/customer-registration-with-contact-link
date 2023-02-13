@@ -2,7 +2,7 @@ import * as React from "react";
 import api from "../../services/api";
 import List from "@mui/material/List";
 import Avatar from "@mui/material/Avatar";
-import { ContentContacts } from "./styles";
+import { ContentContacts, ContentRecents, ContentSpan } from "./styles";
 import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 import { IContactData } from "../../interfaces";
@@ -42,14 +42,6 @@ const DashboardContacts = () => {
 
   const token = localStorage.getItem("@GetInTouch:token");
 
-  React.useEffect(() => {
-    api
-      .get("/contact", {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((res) => setContacts(res.data));
-  }, [token, request]);
-
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
   const open = Boolean(anchorEl);
@@ -62,12 +54,153 @@ const DashboardContacts = () => {
     setAnchorEl(null);
   };
 
+  const recentContacts = contacts
+    .sort((a: IContactData, b: IContactData) => {
+      const updatedAtA = a.updatedAt
+        ? new Date(a.updatedAt)
+        : new Date("1900-01-01T00:00:00.000Z");
+      const updatedAtB = b.updatedAt
+        ? new Date(b.updatedAt)
+        : new Date("1900-01-01T00:00:00.000Z");
+      return updatedAtB.getTime() - updatedAtA.getTime();
+    })
+    .slice(0, 3);
+
+  React.useEffect(() => {
+    api
+      .get("/contact", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => {
+        setContacts(res.data);
+      });
+  }, [token, request, recentContacts]);
   return (
     <ContentContacts>
       {createContactModal && <ModalCreateContact />}
       {updateContactModal && <ModalUpdateContact />}
       <List sx={{ width: "100%", maxWidth: 500, bgcolor: "background.paper" }}>
-      <span>Contacts</span>
+        <ContentSpan>Recents</ContentSpan>
+        {recentContacts.map((contact) => (
+          <ContentRecents key={contact.id}>
+            <ListItem alignItems="flex-start">
+              <ListItemAvatar>
+                <Avatar alt={`${contact.name}`} src={`${contact.name}`} />
+              </ListItemAvatar>
+              <ListItemText
+                primary={`${contact.name}`}
+                secondary={
+                  <React.Fragment>
+                    <Typography
+                      sx={{ display: "inline" }}
+                      component="span"
+                      variant="body2"
+                      color="text.primary"
+                    >
+                      +55{" "}
+                      {contact.telephone.replace(
+                        /(\d{2})(\d{5})(\d{4})/,
+                        "($1) $2-$3"
+                      )}
+                    </Typography>
+                    {` `}
+                  </React.Fragment>
+                }
+              />
+              <Box aria-label="menu">
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    textAlign: "center",
+                  }}
+                >
+                  <Tooltip title="Account settings">
+                    <IconButton
+                      onClick={(event) => {
+                        handleClick(event);
+                        setContactValues({
+                          id: contact.id,
+                          name: contact.name,
+                          email: contact.email,
+                          telephone: contact.telephone,
+                        });
+                      }}
+                      size="small"
+                      sx={{ ml: 2 }}
+                      aria-controls={open ? "account-menu" : undefined}
+                      aria-haspopup="true"
+                      aria-expanded={open ? "true" : undefined}
+                    >
+                      <AiOutlineEllipsis />
+                    </IconButton>
+                  </Tooltip>
+                </Box>
+                <Menu
+                  anchorEl={anchorEl}
+                  id="account-menu"
+                  open={open}
+                  onClose={() => handleClose()}
+                  onClick={() => handleClose()}
+                  PaperProps={{
+                    elevation: 0,
+                    sx: {
+                      overflow: "visible",
+                      filter: "drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.101))",
+                      mt: 1.5,
+                      "& .MuiAvatar-root": {
+                        width: 32,
+                        height: 32,
+                        ml: -0.5,
+                        mr: 1,
+                      },
+                      "&:before": {
+                        content: '""',
+                        display: "block",
+                        position: "absolute",
+                        top: 0,
+                        right: 14,
+                        width: 10,
+                        height: 10,
+                        bgcolor: "background.paper",
+                        transform: "translateY(-50%) rotate(45deg)",
+                        zIndex: 0,
+                      },
+                    },
+                  }}
+                  transformOrigin={{ horizontal: "right", vertical: "top" }}
+                  anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+                >
+                  <MenuItem
+                    onClick={() => {
+                      setUpdateContactModal(true);
+                    }}
+                  >
+                    <ListItemIcon>
+                      <EditIcon fontSize="medium" />
+                    </ListItemIcon>
+                    Update
+                  </MenuItem>
+                  <Divider />
+                  <MenuItem
+                    onClick={() => {
+                      if (contactValues.id) {
+                        deleteContact(contactValues.id);
+                      }
+                    }}
+                  >
+                    <ListItemIcon>
+                      <DeleteIcon fontSize="medium" />
+                    </ListItemIcon>
+                    Delete
+                  </MenuItem>
+                </Menu>
+              </Box>
+            </ListItem>
+            <Divider variant="middle" component="li" />
+          </ContentRecents>
+        ))}
+        <ContentSpan>Contacts</ContentSpan>
         {contacts!.map((elem: IContactData) => {
           return (
             <div key={elem.id}>

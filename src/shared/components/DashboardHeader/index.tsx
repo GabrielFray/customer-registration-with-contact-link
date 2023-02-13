@@ -15,14 +15,17 @@ import Tooltip from "@mui/material/Tooltip";
 import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
 import { UserContext } from "../../context/UserContext";
+import { IContactData } from "../../interfaces";
 
 const DashboardHeader = () => {
-  const { logout, setUpdateProfile } =
-    React.useContext(UserContext);
+  const { logout, setUpdateProfile } = React.useContext(UserContext);
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
   const open = Boolean(anchorEl);
+
+  const [searchTerm, setSearchTerm] = React.useState("");
+
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -30,6 +33,25 @@ const DashboardHeader = () => {
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const ContactsList = ({ contacts }: { contacts: IContactData[] }) => {
+    const [filteredContacts, setFilteredContacts] = React.useState(contacts);
+
+    React.useEffect(() => {
+      setFilteredContacts(
+        contacts.filter((contact: IContactData) => {
+          return (
+            contact.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            contact.telephone.toLowerCase().includes(searchTerm.toLowerCase())
+          );
+        })
+      );
+    }, [contacts, searchTerm]);
+  };
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(event.target.value);
   };
 
   return (
@@ -51,6 +73,8 @@ const DashboardHeader = () => {
           sx={{ ml: 1, flex: 1 }}
           placeholder="Search your contacts"
           inputProps={{ "aria-label": "search google maps" }}
+          value={searchTerm}
+          onChange={() => handleChange}
         />
         <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
         <Box sx={{ p: "10px" }} aria-label="search">
