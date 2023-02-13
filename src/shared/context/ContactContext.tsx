@@ -12,9 +12,9 @@ interface IContactContext {
 
   deleteContact: (id: string) => void;
 
-  contacts: [];
+  contacts: IContactData[];
 
-  setContacts: React.Dispatch<React.SetStateAction<[]>>;
+  setContacts: React.Dispatch<React.SetStateAction<IContactData[]>>;
 
   createContactModal: boolean;
 
@@ -34,7 +34,7 @@ interface IContactContext {
 const ContactProviderContext = ({ children }: IProps) => {
   const token = localStorage.getItem("@GetInTouch:token");
 
-  const [contacts, setContacts] = React.useState<[]>([]);
+  const [contacts, setContacts] = React.useState<IContactData[]>([]);
 
   const [request, setRequest] = React.useState<string>("");
 

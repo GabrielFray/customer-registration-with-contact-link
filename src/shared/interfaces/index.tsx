@@ -22,6 +22,7 @@ export interface IContactData {
   name: string;
   email: string;
   telephone: string;
+  updatedAt?: string;
 }
 
 export interface IUpdateData {
@@ -30,4 +31,3 @@ export interface IUpdateData {
   email?: string;
   telephone?: string;
 }
-

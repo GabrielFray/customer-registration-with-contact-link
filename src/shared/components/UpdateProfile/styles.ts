@@ -10,7 +10,6 @@ align-items: center;
 
 width: 100%;
 max-width: 26.875rem;
-height: 70%;
 padding: 1rem;
 
 background-color: #fff;
