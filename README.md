@@ -23,11 +23,7 @@
 
 ## 2. Links relevantes
 
-- <a name="deploy-da-aplicação" href ="https://customer-registration-api.onrender.com" target="_blank">Link da aplicação</a>
-
-## Diagrama ER da API definindo bem as relações entre as tabelas do banco de dados.
-
-<img height="500" align="center" src="https://i.imgur.com/abEspg6.png"></img>
+- <a name="deploy-da-aplicação" href ="https://customer-registration-api.onrender.com" target="_blank">Link da aplicação back-end</a>
 
 <a align="left" name="techs"></a>
 
@@ -38,10 +34,8 @@ Visão Geral das tecnologias usadas no projeto.
 - [TypeScript](https://www.typescriptlang.org/)
 - [Yup](https://www.npmjs.com/package/yup)
 
----
 <a align="left" name="techs"></a>
 
----
 <a name="install"></a>
 
 ## 4. Instalação e uso
@@ -56,13 +50,7 @@ Visão Geral das tecnologias usadas no projeto.
 4.2.2 - Após o clone no repositório para adicionar todas as dependências do package json execute o comando: 
 `yarn install` 
 
-4.2.3 - Crie um arquivo na raiz do projeto chamado .env e faça as configurações das variáveis de ambiente com base no .env.example do projeto
-```
-SECRET_KEY=chave secreta definida pelo seu time de desenvolvimento
-DATABASE_URL="postgres://gabriel_fray:7355@127.0.0.1:5432/customer_registration"
-DATABASE_URL="postgres://user:password@localhost:5432/postgres_db"  
-```
-4.2.4 - Para rodar projeto utilize o comando `yarn dev` no terminal, caso de tudo certo receberá uma mensagem parecida com essa:
+4.2.2 - Para rodar projeto utilize o comando `yarn dev` no terminal, caso de tudo certo receberá uma mensagem parecida com essa:
 
 ```
 [INFO] 17:23:18 ts-node-dev ver. 2.0.0 (using ts-node ver. 10.9.1, typescript ver. 4.8.4)
@@ -72,10 +60,9 @@ VITE v4.0.4  ready in 4915 ms
   ➜  Network: use --host to expose  
   ➜  press h to show help
 ```
+4.2.3 - O deploy foi feito no vercel e podera ser acessado por esse link Get in touch(), mas ainda sim terá que rodar o back-end localmente.
 
 <a name="devs"></a>
-
-4.2.4 - O deploy foi feito no vercel e podera ser acessado por esse link Get in touch(), mas ainda sim terá que rodar o back-end localmente.
 
 ## 5. Desenvolvido por
 
