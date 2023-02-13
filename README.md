@@ -32,8 +32,18 @@
 
 Visão Geral das tecnologias usadas no projeto.
 
+- [React](https://reactjs.org)
+- [Vite](https://vitejs.dev)
 - [TypeScript](https://www.typescriptlang.org/)
-- [Yup](https://www.npmjs.com/package/yup)
+- [Material Icon MUI](https://mui.com)
+- [yup](https://www.npmjs.com/package/yup)
+- [axios](https://react-hook-form.com)
+- [react-router-dom](https://reactrouter.com)
+- [animate.css](https://animate.style)
+- [react-toastfy](https://www.npmjs.com/package/react-toastify)
+- [styled-components](https://www.styled-components.com)
+- [react-hook-form](https://react-hook-form.com)
+- [react-icons](https://react-icons.github.io/react-icons/search)
 
 <a align="left" name="techs"></a>
 
