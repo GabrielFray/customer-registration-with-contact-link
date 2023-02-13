@@ -74,7 +74,7 @@ const DashboardContacts = () => {
       .then((res) => {
         setContacts(res.data);
       });
-  }, [token, request, recentContacts]);
+  }, [token, request]);
   return (
     <ContentContacts>
       {createContactModal && <ModalCreateContact />}

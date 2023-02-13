@@ -8,13 +8,11 @@ const Profile = () => {
       <Box
         sx={{
           position: "absolute",
-          display:"flex",
-          alignItems:"center",
+          display: "flex",
+          alignItems: "center",
           justifyContent: "center",
-          width: "100%",
-          height: "100%",
-          borderRadius: "1rem 1rem 0 0",
-          boxShadow: (theme) => theme.shadows[5],
+          minWidth: "100vw",
+          minHeight: "100vh",
         }}
       >
         <UpdateProfile />

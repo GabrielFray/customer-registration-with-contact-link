@@ -9,8 +9,6 @@ width: 100%;
 height: 100%;
 
 padding: .625rem;
-
-    
 `
 export const ContentSpan = styled.div`
 font-size: 1rem;
