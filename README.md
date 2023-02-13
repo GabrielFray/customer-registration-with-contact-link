@@ -24,6 +24,7 @@
 ## 2. Links relevantes
 
 - <a name="deploy-da-aplicação" href ="https://customer-registration-api.onrender.com" target="_blank">Link da aplicação back-end</a>
+- <a name="deploy-da-aplicação" href ="https://get-in-touch-snowy.vercel.app" target="_blank">Link da aplicação front-end</a>
 
 <a align="left" name="techs"></a>
 
