@@ -74,14 +74,6 @@ VITE v4.0.4  ready in 4915 ms
 ```
 4.2.3 - O deploy do seu projeto foi realizado no Vercel e pode ser acessado pelo link [Get in touch](https://get-in-touch-snowy.vercel.app). No entanto, é necessário rodar o back-end localmente para garantir que todas as requisições funcionem corretamente.
 
-```
-Starting myapp_db_1  ... done
-Starting myapp_web_1 ... done
-Attaching to myapp_db_1, myapp_web_1
-db_1   | 2021-02-13T08:15:12.651533Z 0 [Note] mysqld (mysqld 10.3.22-MariaDB-1:10.3.22+maria~bionic) starting as process 1 ...
-web_1  | Listening on 5000...
-````
-
 <a name="devs"></a>
 
 ## 5. Desenvolvido por
