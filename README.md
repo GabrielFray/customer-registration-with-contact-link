@@ -17,7 +17,7 @@
 
 ## 1. Sobre
 
-- A finalidade desta API é criar um sistema de cadastro simplificado de clientes, onde será possível vincular contatos a cada cliente. A Api permitirá a visualização dos clientes e dos contatos vinculados a eles de forma organizada e fácil de acessar. Além disso, essa Api fornecerá as funcionalidades básicas de um CRUD (criação, leitura, atualização e exclusão) para gerenciar esses dados de forma eficiente e segura, permitindo que você mantenha seu cadastro de clientes atualizado e sempre à mão. Em resumo, a API de cadastro de clientes com vínculo de contatos oferece uma solução simplificada e prática para gerenciar seus dados de clientes e contatos.
+- A finalidade desta API é criar um sistema de cadastro simplificado de clientes, onde será possível vincular contatos a cada cliente. A Api permitirá a visualização dos clientes e dos contatos vinculados a eles de forma organizada e fácil de acessar. Além disso, essa Api fornecerá as funcionalidades básicas de um CRUD (criação, leitura, atualização e exclusão) para gerenciar esses dados de forma eficiente e segura, permitindo que você mantenha seu cadastro de clientes atualizado e sempre à mão. Em resumo, a Api de cadastro de clientes com vínculo de contatos oferece uma solução simplificada e prática para gerenciar seus dados de clientes e contatos.
 
 <a name="links"></a>
 
@@ -57,7 +57,7 @@ Visão Geral das tecnologias usadas no projeto.
 - Rodar a aplicação Back-end localmente
 
 ### 4.2 Instalação
-4.2.1 - Para executar a aplicação localmente, siga os passos descritos na documentação da [API](https://github.com/GabrielFray/customer-registration-with-contact-link-api), disponível em GitHub. Se desejar utilizar o deploy, utilize o link https://customer-registration-api.onrender.com e insira-o na variável ```baseUrl``` na pasta ```services```. No entanto, é importante ressaltar que a versão em deploy pode apresentar problemas de lentidão, sendo recomendado o uso da aplicação rodada localmente.
+4.2.1 - Para executar a aplicação localmente, siga os passos descritos na documentação da [Api](https://github.com/GabrielFray/customer-registration-with-contact-link-api), disponível em GitHub. Se desejar utilizar o deploy, utilize o link https://customer-registration-api.onrender.com e insira-o na variável ```baseUrl``` na pasta ```services```. No entanto, é importante ressaltar que a versão em deploy pode apresentar problemas de lentidão, sendo recomendado o uso da aplicação rodada localmente.
 
 4.2.2 - Após o clone no repositório para adicionar todas as dependências do package json execute o comando: 
 `yarn install` 
