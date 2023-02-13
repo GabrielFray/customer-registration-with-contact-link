@@ -10,5 +10,5 @@ height: 100vh;
 
 position: absolute;
 z-index: 1;
-
+backdrop-filter: blur(3px);
 `

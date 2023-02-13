@@ -10,11 +10,12 @@ align-items: center;
 
 width: 100%;
 max-width: 26.875rem;
-height: 100%;
+height: 70%;
 padding: 1rem;
 
 background-color: #fff;
-box-shadow: .25rem .25rem .3125rem 0rem rgba(0,0,0,0.75);
+border-radius: 5px;
+box-shadow: .75rem .75rem .3125rem -0.0625rem rgba(0,0,0,0.2);
 `
 export const ProfileHeader = styled.header`
 display: flex;

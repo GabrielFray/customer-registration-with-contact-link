@@ -13,7 +13,7 @@ import {
   ContentHeader,
   ContentModal,
   ContentModalForm,
-} from "../ModalCreateContact/styles";
+} from "./styles";
 
 const ModalUpdateProfile = () => {
   const { onSubmitUpdate, setUpdateModalProfile, userValues } =

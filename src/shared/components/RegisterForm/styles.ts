@@ -3,15 +3,14 @@ import styled from "styled-components";
 export const RegisterContent = styled.div`
 display: flex;
 flex-direction: column;
-justify-content: space-evenly;
 
 width: 30rem;
 height: 100%;
-max-height: 50rem;
+max-height: 53rem;
 padding: 1.5rem;
-gap: 1rem;
 
 background-color: #fff;
+box-shadow: .75rem .75rem .3125rem -0.0625rem rgba(0,0,0,0.2);
 border-radius: .3125rem;
 `
 export const ContentTitle = styled.div`
@@ -43,8 +42,8 @@ gap: .625rem;
 export const ContentForm = styled.form`
 display: flex;
 flex-direction: column;
-justify-content: center;
-gap: 2.5rem;
+justify-content: space-evenly;
+height: 100%;
 width: 100%;
 `
 

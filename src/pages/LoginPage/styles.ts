@@ -5,8 +5,8 @@ display: flex;
 align-items: center;
 justify-content: center;
 
-background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+background-color: #FF3CAC;
+background-image: linear-gradient(135deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%);
 width: 100vw;
 height: 100vh;
-backdrop-filter: blur(3px);
 `

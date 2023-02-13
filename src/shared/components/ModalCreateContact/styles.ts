@@ -16,6 +16,4 @@ justify-content: center;
 
 height: 70%;
 gap: 1.5rem;
-
-   
 `
