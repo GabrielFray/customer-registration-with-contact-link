@@ -10,8 +10,10 @@ width: 30rem;
 height: 100vh;
 max-height: 50rem;
 padding: 1.5rem;
-background-color: #fff;
 border-radius: .3125rem;
+
+background-color: #fff;
+box-shadow: .75rem .75rem .3125rem -0.0625rem rgba(0,0,0,0.2);
 
 `
 
@@ -69,11 +71,13 @@ export const ContentRemember = styled.div`
 display: flex;
 align-items: center;
 justify-content: space-between;
+font: .875rem;
 `
 
 export const ForgotPassword = styled.span`
 color: #1976d2;
 font-weight: 500;
+font-size: .875rem;
 
     :hover {
         cursor: pointer;

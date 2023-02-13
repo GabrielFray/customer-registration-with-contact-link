@@ -66,8 +66,8 @@ const DashboardContacts = () => {
     <ContentContacts>
       {createContactModal && <ModalCreateContact />}
       {updateContactModal && <ModalUpdateContact />}
+      <List sx={{ width: "100%", maxWidth: 500, bgcolor: "background.paper" }}>
       <span>Contacts</span>
-      <List sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
         {contacts!.map((elem: IContactData) => {
           return (
             <div key={elem.id}>
