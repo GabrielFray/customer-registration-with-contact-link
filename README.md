@@ -57,7 +57,8 @@ Visão Geral das tecnologias usadas no projeto.
 - Rodar a aplicação Back-end localmente
 
 ### 4.2 Instalação
-4.2.1 - Para rodar a aplicação localmente faça os passos a passos da documentação da [API](https://github.com/GabrielFray/customer-registration-with-contact-link-api). Caso queira rodar com o deploy use esse link ```https://customer-registration-api.onrender.com```, colocando o link na pasta ```services``` na variável ```baseUrl```, porém ele tem problemas de lentidão, é recomendado que seja rodado localmente para os testes.
+4.2.1 - Para executar a aplicação localmente, siga os passos descritos na documentação da [API](https://github.com/GabrielFray/customer-registration-with-contact-link-api), disponível em GitHub. Se desejar utilizar o deploy, utilize o link https://customer-registration-api.onrender.com e insira-o na variável ```baseUrl``` na pasta ```services```. No entanto, é importante ressaltar que a versão em deploy pode apresentar problemas de lentidão, sendo recomendado o uso da aplicação rodada localmente.
+
 4.2.2 - Após o clone no repositório para adicionar todas as dependências do package json execute o comando: 
 `yarn install` 
 
@@ -71,7 +72,7 @@ VITE v4.0.4  ready in 4915 ms
   ➜  Network: use --host to expose  
   ➜  press h to show help
 ```
-4.2.3 - O deploy foi feito no vercel e podera ser acessado por esse link Get in touch(), mas ainda sim terá que rodar o back-end localmente.
+4.2.3 - O deploy do seu projeto foi realizado no Vercel e pode ser acessado pelo link [Get in touch](https://get-in-touch-snowy.vercel.app). No entanto, é necessário rodar o back-end localmente para garantir que todas as requisições funcionem corretamente.
 
 <a name="devs"></a>
 
