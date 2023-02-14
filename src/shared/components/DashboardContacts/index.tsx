@@ -17,7 +17,7 @@ import ListItemAvatar from "@mui/material/ListItemAvatar";
 import { ContactContext } from "../../context/ContactContext";
 import noContacts from "../../../../public/assets/contacts.json";
 import GroupAddRoundedIcon from "@mui/icons-material/GroupAddRounded";
-import { ContentContacts, ContentImage, ContentSpan } from "./styles";
+import { ContentContacts, ContentImage, ContentSpan, NoContacts } from "./styles";
 import {
   Box,
   IconButton,
@@ -340,12 +340,12 @@ const DashboardContacts = () => {
           })}
         </List>
       ) : (
-        <>
-          <h1>No registered contacts</h1>
+        <NoContacts>
+          <h2>No registered contacts</h2>
           <ContentImage>
             <Lottie options={defaultOptions} />
           </ContentImage>
-        </>
+        </NoContacts>
       )}
       <SpeedDial
         ariaLabel="SpeedDial"

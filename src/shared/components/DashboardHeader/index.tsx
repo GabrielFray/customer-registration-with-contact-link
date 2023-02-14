@@ -63,7 +63,7 @@ const DashboardHeader = () => {
           display: "flex",
           alignItems: "center",
           width: "100%",
-          maxWidth: "500px",
+          maxWidth: "765px",
         }}
       >
         <IconButton sx={{ p: "10px" }} aria-label="menu">
