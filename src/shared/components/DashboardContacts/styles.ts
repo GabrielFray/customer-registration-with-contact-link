@@ -15,6 +15,9 @@ font-size: 1rem;
 font-weight: 600;
 padding: .9375rem 0rem 0rem .375rem;
 `
+export const ContentImage = styled.div`
+  @media (min-width: 768px) {
+    width: 70%;
+  }
+`;
 
-export const ContentRecents = styled.div`
-`

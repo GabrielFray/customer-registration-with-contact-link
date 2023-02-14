@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ContentDashboard = styled.div`
 min-width: 100vw;
-min-height: 100vh;
+height: 100vh;
 
 display: flex;
 flex-direction: column;
