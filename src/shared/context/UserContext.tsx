@@ -97,12 +97,12 @@ const UserProvider = ({ children }: IProps) => {
       .patch("/user", data, {
         headers: { Authorization: `Bearer ${token} ` },
       })
-      .then((res) => {
+      .then(() => {
         toast.success("Profile successfully update", {
           toastId: 1,
         });
         setUpdateModalProfile(false);
-        setProfileRequest("Profile updated");
+        setProfileRequest((old) => old + "1");
       });
   };
 

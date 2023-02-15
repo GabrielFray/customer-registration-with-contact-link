@@ -11,6 +11,7 @@ align-items: center;
 width: 100%;
 max-width: 26.875rem;
 padding: 1rem;
+;
 
 background-color: #fff;
 border-radius: 5px;

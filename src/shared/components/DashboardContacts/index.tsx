@@ -61,7 +61,7 @@ const DashboardContacts = () => {
       .then((res) => {
         setContacts(res.data);
       });
-  }, [token, request, updateContactModal]);
+  }, [token, request]);
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);

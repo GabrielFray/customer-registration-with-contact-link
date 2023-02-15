@@ -1,24 +1,23 @@
-import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
-import { Avatar, Box, IconButton } from "@mui/material";
-import { FaEllipsisV } from "react-icons/fa";
-import { ContentAvatar, ProfileHeader, ProfileModal } from "./styles";
 import * as React from "react";
+import api from "../../services/api";
 import List from "@mui/material/List";
-import ListItemButton from "@mui/material/ListItemButton";
+import { FaEllipsisV } from "react-icons/fa";
+import { IUpdateData } from "../../interfaces";
+import Collapse from "@mui/material/Collapse";
+import EmailIcon from "@mui/icons-material/Email";
+import { Avatar, IconButton } from "@mui/material";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import Collapse from "@mui/material/Collapse";
+import ModalUpdateProfile from "../ModalUpdateProfile";
+import { UserContext } from "../../context/UserContext";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
-import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
+import ListItemButton from "@mui/material/ListItemButton";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
-import EmailIcon from "@mui/icons-material/Email";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
-import { UserContext } from "../../context/UserContext";
-import api from "../../services/api";
-import { IUpdateData } from "../../interfaces";
-import { ContactContext } from "../../context/ContactContext";
-import ModalUpdateProfile from "../ModalUpdateProfile";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
+import { ContentAvatar, ProfileHeader, ProfileModal } from "./styles";
 
 const UpdateProfile = () => {
   const {
