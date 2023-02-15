@@ -41,7 +41,7 @@ const UserProvider = ({ children }: IProps) => {
   const [updateModalProfile, setUpdateModalProfile] =
     React.useState<boolean>(false);
 
-  const [userValues, setUserValues] = React.useState<IUpdateData>({});
+  const [userValues, setUserValues] = React.useState<any>({});
 
   const logout = () => {
     localStorage.clear();
@@ -91,14 +91,13 @@ const UserProvider = ({ children }: IProps) => {
       });
   };
 
-  const token = localStorage.getItem("@GetInTouch:token");
-
   const onSubmitUpdate = (data: IUpdateData) => {
+    const token = localStorage.getItem("@GetInTouch:token");
     api
       .patch("/user", data, {
         headers: { Authorization: `Bearer ${token} ` },
       })
-      .then(() => {
+      .then((res) => {
         toast.success("Profile successfully update", {
           toastId: 1,
         });

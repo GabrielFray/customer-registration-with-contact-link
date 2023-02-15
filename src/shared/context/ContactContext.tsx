@@ -51,12 +51,12 @@ const ContactProviderContext = ({ children }: IProps) => {
       .post("/contact", data, {
         headers: { Authorization: `Bearer ${token} ` },
       })
-      .then(() => {
+      .then((res) => {
         toast.success("Contact successfully created", {
           toastId: 1,
         });
         setCreateContactModal(false);
-        setRequest("Contact created");
+        setContacts([...contacts, res.data]);
       })
       .catch((err) => {
         toast.error(err.response.data.message, {
@@ -70,7 +70,7 @@ const ContactProviderContext = ({ children }: IProps) => {
       .patch(`/contact/${id}`, data, {
         headers: { Authorization: `Bearer ${token} ` },
       })
-      .then(() => {
+      .then((res) => {
         toast.success("Contact successfully update", {
           toastId: 1,
         });

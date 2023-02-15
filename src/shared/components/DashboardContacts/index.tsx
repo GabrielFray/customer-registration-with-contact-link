@@ -17,7 +17,12 @@ import ListItemAvatar from "@mui/material/ListItemAvatar";
 import { ContactContext } from "../../context/ContactContext";
 import noContacts from "../../../../public/assets/contacts.json";
 import GroupAddRoundedIcon from "@mui/icons-material/GroupAddRounded";
-import { ContentContacts, ContentImage, ContentSpan, NoContacts } from "./styles";
+import {
+  ContentContacts,
+  ContentImage,
+  ContentSpan,
+  NoContacts,
+} from "./styles";
 import {
   Box,
   IconButton,
@@ -56,7 +61,7 @@ const DashboardContacts = () => {
       .then((res) => {
         setContacts(res.data);
       });
-  }, [token, request]);
+  }, [token, request, updateContactModal]);
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -342,9 +347,9 @@ const DashboardContacts = () => {
       ) : (
         <NoContacts>
           <h2>No registered contacts</h2>
-          <ContentImage>
+          {/* <ContentImage>
             <Lottie options={defaultOptions} />
-          </ContentImage>
+          </ContentImage> */}
         </NoContacts>
       )}
       <SpeedDial
