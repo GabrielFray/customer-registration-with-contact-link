@@ -347,9 +347,9 @@ const DashboardContacts = () => {
       ) : (
         <NoContacts>
           <h2>No registered contacts</h2>
-          {/* <ContentImage>
+          <ContentImage>
             <Lottie options={defaultOptions} />
-          </ContentImage> */}
+          </ContentImage>
         </NoContacts>
       )}
       <SpeedDial
