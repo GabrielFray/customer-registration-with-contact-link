@@ -5,10 +5,11 @@ display: flex;
 align-items: center;
 justify-content: center;
 
-width: 100vw;
-height: 100vh;
+width: 100vw ;
+height: 100vh ;
 
 position: absolute;
 z-index: 1;
-backdrop-filter: blur(3px);
+backdrop-filter: blur(.1875rem);
+
 `

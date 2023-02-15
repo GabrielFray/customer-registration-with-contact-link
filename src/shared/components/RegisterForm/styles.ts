@@ -6,7 +6,7 @@ flex-direction: column;
 
 width: 30rem;
 height: 100%;
-max-height: 53rem;
+max-height: 50rem;
 padding: 1.5rem;
 
 background-color: #fff;

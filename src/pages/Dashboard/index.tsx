@@ -11,12 +11,13 @@ const Dashboard = () => {
 
   const navigate = useNavigate();
 
+  const token = localStorage.getItem("@GetInTouch:token");
+
   React.useEffect(() => {
-    const token = localStorage.getItem("@GetInTouch:token");
     if (!token) {
-      navigate("/session");
+      navigate("/");
     }
-  }, []);
+  }, [token]);
   return (
     <ContentDashboard>
       {updateProfile && <Profile />}
