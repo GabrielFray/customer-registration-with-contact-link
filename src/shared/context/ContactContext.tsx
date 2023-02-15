@@ -70,12 +70,12 @@ const ContactProviderContext = ({ children }: IProps) => {
       .patch(`/contact/${id}`, data, {
         headers: { Authorization: `Bearer ${token} ` },
       })
-      .then((res) => {
+      .then(() => {
         toast.success("Contact successfully update", {
           toastId: 1,
         });
         setUpdateContactModal(false);
-        setRequest("Contact updated");
+        setRequest((old) => old + "1");
       });
   };
 
@@ -89,7 +89,7 @@ const ContactProviderContext = ({ children }: IProps) => {
           toastId: 1,
         });
         setUpdateContactModal(false);
-        setRequest("Contact deleted");
+        setRequest((old) => old + "2");
       });
   };
   return (
